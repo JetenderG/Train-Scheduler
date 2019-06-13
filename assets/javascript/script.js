@@ -24,63 +24,69 @@ var time = moment().format("HH:mm");
 var momentadd = moment().format("HH:mm");
 console.log(momentadd);
 
-function timestop(time, freq) {
-
-
-    if (time === time) {
-
-        time + freq;
-        return time;
-        //add frquency amount
-    } else
-        time - 1;
-}
-
-var counttime = setInterval(function (freq) {
-
-    if (freq < 0) {
-
-        freq = 6;
-
-    } else
-
-        freq - 1;
-
-}, 1000);
-
 
 
 database.ref("/Train_Info/").on("child_added", function (snapshot) {
+
+
+
 
     snapshot.forEach(function (childsnap) {
 
         var object_name = childsnap.val();
         var timein = moment(object_name.frequency, "MM");
-
         var trainStop = moment(object_name.militaryTime, "HH:mm")
         var trainstopvone = moment().set({
             "hour": object_name.militaryTime[0],
             "minute": object_name.militaryTime[1]
         })
-
+        var freqTime = object_name.frequency;
         var trainNew = trainStop.add(object_name.frequency, "m").format("HH:mm")
         var initialTime = moment(trainstopvone).format("HH:mm");
         var differnce = moment.utc(moment(trainNew, "HH:mm").diff(moment(initialTime, "HH:mm"))).format("mm");
+        var formtime = moment(object_name.militaryTime, "HH:mm").add(4, "mm");
+        var findthetime = moment();
+        var i = 0;
+
+        ////////////////////////////////
+
+
 
         console.log(differnce);
         console.log(trainStop);
         console.log(trainstopvone);
-        console.log(trainNew)
-        var formtime = moment(object_name.militaryTime, "HH:mm").add(4, "mm");
+        console.log(trainNew);
         console.log(formtime);
-        // var tranv = trainStop.add(timein, "m").format("HH:MM");
-        // trainStop.add(timemin, "minutes");
-        //console.log(tranv);
         console.log(object_name.militaryTime);
         console.log(timein);
-        var row = "<tr><td class='cell'>" + object_name.name + "</td><td class='cell'>" + object_name.destination + "</td><td class='cell'>" + object_name.frequency + "</td><td class='cell'>" + trainNew + "</td><td class='cell'>" + differnce + "</td></tr>";
+        console.log(findthetime);
+        ////////////////////////////////
+        var row = "<tr><td class='cell'>" + object_name.name + "</td><td class='cell'>" + object_name.destination + "</td><td class='cell'>" + object_name.frequency + "</td><td class='cell' id = 'nextA' >" + trainNew + "</td><td class='cell' id = 'diff'>" + differnce + "</td></tr>";
 
         table.append(row);
+        /////////////////////////////////////
+
+        function updateTime() {
+            console.log("hi");
+            if (object_name.frequency < 0) {
+
+                object_name.frequency = 0;
+                console.log(0)
+
+            } else
+
+                i++
+            console.log(0)
+
+        }
+
+
+        setInterval(function () {
+            ()
+        }, 60000)
+
+
+
     })
 });
 
@@ -117,7 +123,19 @@ $("#btnSubmit").on("click", function (event) {
 
 
 
+database.ref().once("value", function (snapshot) {
 
+    snapshot.forEach(function (snap) {
+
+
+        object = snap.val()
+
+
+    })
+
+
+
+})
 
 
 // save data into variable for each column in need 
