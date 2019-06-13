@@ -24,5 +24,5 @@ Built With
 
 - [Bootsrap](https://getbootstrap.com/) CSS FrameWork
 - [Jquery](https://jquery.com/) Javascript Library
-- [Firebase][https://firebase.google.com/] RealTime Database
+- [Firebase](https://firebase.google.com/) RealTime Database
 - [Node.js](https://nodejs.org/en/) Enviromental Javascript Runtime
