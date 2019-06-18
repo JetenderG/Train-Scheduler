@@ -1,11 +1,11 @@
 Train Scheduler
 =====
-
-
 Description 
 -----------
-A simple train scheduler app where user can input add data to find out where train is going and what time it will arrive.
+A simple train scheduler app where user can input add data to find out where train is going and what time it will arrive. 
 
+
+![Page](/assets/images_animation/1560840445826.png)
 
 
 Instructions 
